@@ -1,27 +1,18 @@
-#Graficas Sr4
-#Jessica Ortiz
-#20192
+#Jessica Ortiz 20192
+#sr5 texturas
 
 from cargar import Render
 
-w = 1000
-h = 1000
-rend = Render()
-rend.glCreateWindow(w, h)
+from textures import Texture
 
-rend.glViewport(int(0),
-                int(0), 
-                int(w/1), 
-                int(h/1))
+#tamaño de lienzo
+render = Render(1000, 1000)
 
-def glInit():
-    return rend
+#cargar textura
+texture = Texture('textureF.bmp')
 
-if __name__ == '__main__':
+#definicr objeto, posicion(xyz), tamaño, textura
+render.glObjModel('formica.obj', (5, 0, 0), (100, 100, 100), texture=texture)
 
-    rend = glInit()
-
-    #cargar .obj (posicion inicial), (escala)
-    rend.glObjModel('FlowerPot.obj', (500, 10, 0), (200, 200, 200))
-    
-    rend.glFinish('out.bmp')
+#imagen final
+render.glFinish('output.bmp')
